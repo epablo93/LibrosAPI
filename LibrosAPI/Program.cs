@@ -84,6 +84,12 @@ var app = builder.Build();
 // Use global exception handling middleware
 app.UseMiddleware<ExceptionMiddleware>();
 
+// global cors policy
+app.UseCors(x => x
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
+
 // Seed dummy data
 using (var scope = app.Services.CreateScope())
 {
