@@ -80,6 +80,3 @@ This repository contains both the backend API (LibrosAPI) and the frontend React
 - Optimize performance for large datasets.
 - Extend API and UI features as needed.
 
----
-
-**Feel free to fork, contribute, or adapt this solution for your needs!**
