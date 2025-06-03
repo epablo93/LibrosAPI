@@ -1,4 +1,5 @@
 using Domain.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
 
@@ -6,6 +7,7 @@ namespace LibrosAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class LibroController : ControllerBase
     {
         private readonly ILibroService _libroService;
@@ -37,7 +39,7 @@ namespace LibrosAPI.Controllers
             if (libro == null)
                 return BadRequest();
             var created = await _libroService.CreateAsync(libro);
-            return CreatedAtAction(nameof(GetById), new { id = created.Titulo }, created); // Replace with Id if available
+            return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
         }
 
         [HttpPut("{id}")]

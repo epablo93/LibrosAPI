@@ -1,4 +1,5 @@
 using LibrosAPI.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibrosAPI.Controllers
@@ -13,6 +14,7 @@ namespace LibrosAPI.Controllers
             _jwtHelper = jwtHelper;
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginDto loginDto)
         {
