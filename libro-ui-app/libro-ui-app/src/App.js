@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import './App.css';
 import LibroList from './components/LibroList';
 import LibroForm from './components/LibroForm';
 import { LibroListProvider } from './components/LibroList';
 import { NotificationProvider } from './components/NotificationProvider';
 
-function App() {
+const App = memo(() => {
   return (
     <div className="App">
       <header className="App-header">
@@ -21,6 +21,6 @@ function App() {
       </main>
     </div>
   );
-}
+});
 
 export default App;

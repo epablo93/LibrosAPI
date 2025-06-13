@@ -17,7 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<LibrosDbContext>(options =>
     options.UseInMemoryDatabase("LibrosDb"));
-builder.Services.AddScoped<DbContext>(provider => provider.GetRequiredService<LibrosDbContext>()); // Fix for DI
+builder.Services.AddScoped<DbContext>(provider => provider.GetRequiredService<LibrosDbContext>());
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<ILibroRepository, LibroRepository>();
 builder.Services.AddScoped<ILibroService, LibroService>();

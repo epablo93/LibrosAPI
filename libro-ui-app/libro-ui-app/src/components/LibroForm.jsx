@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useCallback, memo, useMemo } from 'react';
 import libroService from '../services/libroService';
 import { LibroListContext } from './LibroList';
 import { validateRequired, validateMinLength, validateForm } from '../utils/validation';
 import './Libro.css';
 import { useNotification } from './NotificationProvider';
 
-const LibroForm = () => {
+const LibroForm = memo(() => {
   const [formData, setFormData] = useState({
     titulo: '',
     autor: '',
@@ -16,18 +16,18 @@ const LibroForm = () => {
   const { refreshLibros } = useContext(LibroListContext);
   const { showNotification } = useNotification();
 
-  const validations = {
+  const validations = useMemo(() => ({
     titulo: [validateRequired, (value) => validateMinLength(value, 3)],
     autor: [validateRequired],
     descripcion: [validateRequired],
-  };
+  }), []);
 
-  const handleChange = (e) => {
+  const handleChange = useCallback((e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+    setFormData(prev => ({ ...prev, [name]: value }));
+  }, []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
     const validationErrors = validateForm(formData, validations);
     if (Object.keys(validationErrors).length > 0) {
@@ -50,7 +50,7 @@ const LibroForm = () => {
         showNotification('error', 'Ocurrió un error inesperado. Intente más tarde.');
       }
     }
-  };
+  }, [formData, validations, refreshLibros, showNotification]);
 
   return (
     <div className="libro-form">
@@ -89,6 +89,6 @@ const LibroForm = () => {
       </form>
     </div>
   );
-};
+});
 
 export default LibroForm;
