@@ -10,9 +10,9 @@ This repository contains both the backend API (LibrosAPI) and the frontend React
 
 - **Requirements:** .NET 8 SDK
 - **Setup & Run:**
-  1. Open a terminal and navigate to the backend folder: ```sh
+  1. Open a terminal and navigate to the backend folder: ```
      cd LibrosAPI
- ```  2. Restore dependencies and run the API: ```sh
+ ```  2. Restore dependencies and run the API: ```
  dotnet restore
  dotnet run
  ```  3. The API will start (by default on `https://localhost:5001` or `http://localhost:5000`).
@@ -30,11 +30,11 @@ This repository contains both the backend API (LibrosAPI) and the frontend React
 
 - **Requirements:** Node.js (v16+ recommended), npm
 - **Setup & Run:**
-  1. Open a new terminal and navigate to the frontend folder: ```sh
+  1. Open a new terminal and navigate to the frontend folder: ```
  cd libro-ui-app/libro-ui-app
- ```  2. Install dependencies: ```sh
+ ```  2. Install dependencies: ```
      npm install
- ```  3. Start the development server: ```sh
+ ```  3. Start the development server: ```
  npm start
  ```  4. The app will run on `http://localhost:3000` by default.
 
